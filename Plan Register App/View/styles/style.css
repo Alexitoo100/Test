@@ -1,0 +1,426 @@
+
+html, body {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: #344966;
+}
+
+.container-fluid {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: #344966 !important;
+}
+
+#logo {
+    height: 90px;
+    transform: translate(-25%);
+    user-select: none;
+}
+
+.col {
+    width: fit-content;
+    height: fit-content;
+}
+
+.title-row {
+    animation-name: transicion;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-duration: 1s;
+}
+
+.header {
+    background: rgb(7,60,144);
+    background: linear-gradient(309deg, rgba(7,60,144,1) 6%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 75%, rgba(22,77,163,1) 95%);
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    user-select: none !important;
+}
+
+#select-element-update {
+    display: none;
+    user-select: text;
+}
+
+.plan-val, .objective-val, .indicator-val {
+    display: none;
+    user-select: none;
+}
+
+.select-container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 50px;
+    grid-template-columns: 40% 20% 40%;
+    grid-row-gap: 15px;
+}
+
+#create-plan, #update-plan {
+    display: grid;
+    grid-column-start: 2;
+    width: fit-content;
+}
+
+.modal-footer {
+    margin-top: 10px;
+    background-color: #476C9B !important;
+}
+
+label[for="select-objective"] {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 3mm;
+}
+
+#select-objective {
+    border-radius: 10px;
+    padding: 2px;
+    font-size: 20px;
+    width: fit-content;
+    text-align: center;
+    border: 1px solid black;
+}
+
+label[for="select-plan"] {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 3mm;
+}
+
+#select-plan {
+    border-radius: 10px;
+    padding: 2px;
+    font-size: 20px;
+    width: fit-content;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#title {
+    font-weight: bold;
+}
+
+.main {
+    margin: 0% !important;
+    animation-name: transicion2;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-duration: 1s;
+}
+
+.info {
+    border: 1px solid black;
+    background-color: #DBE4EE;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 1px 3px 3px black;
+    height: fit-content !important; 
+}
+
+input[type="checkbox"]:not(#selAll) {
+    width: 45px;
+    height: 45px;
+    clip-path: circle(46% at 50% 50%);
+    outline: 1px solid black !important;
+    margin-top: 5px;
+}
+
+#selAll-container {
+    float: right;
+    margin-right: 1cm;
+    color: white;
+}
+
+.fixed-table-toolbar {
+    background-color: #2B4162;
+}
+
+.menu {
+    width: 100% !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-top: 10px !important;
+}
+
+.bar > .menu > table {
+    width: 100%;
+    font-size: 21px;
+    text-align: center;
+}
+
+.bar_plans > .menu_plans > table {
+    font-size: 21px;
+    text-align: center;
+}
+
+.menu_plans > table tr th {
+    color: black;
+    font-weight: bold;
+}
+
+.data-plan {
+    height: fit-content !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    background: white;
+}
+
+.plans table tr th {
+    background-color: white;
+    color: black;
+}
+
+.plans table tr td {
+    background-color: #2B4162;
+    color: white;
+}
+
+.bi {
+    color: white;
+}
+
+#modal-panel2 > hr {
+    background-color: white !important;
+    color: white !important;
+    height: 3px;
+    opacity: 100%;
+    width: 100%;
+}
+
+#ident-objective-update, #ident-plan-update, #ident-indicator-update {
+    display: none;
+}
+
+#modal-panel2 > select {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.modal-body > select {
+    border: 2px solid black;
+    border-radius: 30px;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    margin-bottom: 10px;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.close {
+    background-color: transparent !important;
+    border-style: none;
+    font-size: 40px;
+    height: fit-content !important;
+    color: white;
+}
+
+.default-option {
+    color: gray;
+}
+
+.default-option option:not(:first-child) {
+    color: black !important;
+}
+
+.close:hover {
+    color: red;
+}
+
+input[type="submit"]:hover {
+    background-color: lightgray;
+    transition: background-color 0.3s ease-in;
+}
+
+#inputs-plan, #inputs-obj, #inputs-indicator {
+    text-align: center;
+}
+
+#inputs-plan > input, #inputs-obj, #inputs-indicator {
+    text-align: center;
+}
+
+#inputs-obj > input, #inputs-obj > label, #inputs-plan > input, #inputs-plan > label, #inputs-indicator > input, #inputs-indicator > label {
+    border-radius: 20px;
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+}
+
+#inputs-plan2, #inputs-obj2 {
+    text-align: center;
+}
+
+#inputs-plan2 > input, #inputs-obj2 {
+    text-align: center;
+}
+
+#inputs-plan2 > input, #inputs-plan2 > label {
+    border-radius: 20px;
+    font-weight: bolder;
+    height: 40px;
+}
+
+#inputs-obj2 > input, #inputs-obj2 > label {
+    border-radius: 20px;
+    font-weight: bold;
+    height: 40px;
+    text-align: center;
+}
+
+textarea {
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#modal-panel {
+    visibility: hidden;
+    position: absolute;
+    height: fit-content !important;
+    width: 55%;
+    z-index: 1;
+    top: 2%;
+    left: 25%;
+}
+
+#modal-panel2 {
+    visibility: hidden;
+    position: absolute;
+    height: fit-content !important;
+    width: 55%;
+    z-index: 1;
+    top: 2%;
+    left: 25%;
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-header {
+    background-color: #476C9B;
+}
+
+#modal-title-div {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#modal-title-div2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.plans table {
+    height: fit-content !important;
+    text-align: center;
+}
+
+.plans {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #DBE4EE !important;
+}
+
+.table-hover > tbody > tr:hover td {
+    font-weight: bold !important;
+    color: white;
+}
+
+.table-hover > tbody > tr:hover td {
+    font-weight: bold !important;
+    color: white;
+}
+
+tr.selected {
+    background-color: #2292A4 !important;
+}
+
+.bootstrap-table {
+    background-color: white !important;
+    color: black !important;
+    width: 100% !important;
+}
+
+#sep {
+    height: 10px !important;
+}
+
+#add, #read, #update, #delete {
+    background-color: #476C9B;
+    color: white;
+    border-color: #101419;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 20px;
+    list-style-type: armenian;
+    height: 40px;
+    width: 120px;
+    margin: 30px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.crud {
+    text-align: center;
+    height: fit-content;
+    width: fit-content;
+}
+
+.crud input:hover {
+    background-color: #2292A4 !important;
+    transition: all 0.5s ease-out;
+}
+
+.crud-panel {
+    width: fit-content !important;
+    height: fit-content !important;
+    background: rgb(255,255,255);
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 1px 3px 3px black;
+    user-select: none;
+    margin-bottom: 10px !important;
+}
+
+.crud-panel > h3 {
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+.crud-panel > hr {
+    color: black;
+}
+
+.menu-bar {
+    padding-top: 10px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 10px;
+}
+
+#welcome-message {
+    color: white;
+}
+
+.rights {
+    text-align: center;
+    color: white;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+

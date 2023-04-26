@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A Web page that provides relevant information about the plans.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, PHP">
+    <meta name="author" content="s2grupo.es">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="../../Controller/JQuery/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>Plan Register App</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row title-row">
+            <div class="col header col-sm-12 col-dm-12 col-12"><img src="../img/logo.png" id="logo"><span id="title">ACTION PLANNING REGISTER APP</span></div>
+            <div class="row menu-bar">
+                <div class="col col-sm-12 col-dm-12 col-12"><span id="welcome-message">Welcome to S2Grupo Action Planning Register App</span></div>
+        </div>
+        <div class="row main">
+            <div class="col info col-sm-10 col-dm-10 col-10" id="planning">
+                <div class="row bar">
+                    <div class="col col-sm-12 col-dm-12 col-12 menu">
+                        <table>
+                            <tr>
+                                <th>Objectives</th>
+                            </tr>
+                        </table>
+                    <div class="row data-plan">
+                        <div class="col plans col-sm-12 col-dm-12 col-12">
+                            <div id="selAll-container">
+                                <label>Seleccionar todo <input type="checkbox" name="selAll" id="selAll"></label>
+                            </div>
+                            <table id="table-targets" class="tables" data-detail-view="true">
+                                <thead>
+                                <tr>
+                                    <th data-field="name" data-align="center"></th>
+                                    <th data-field="code" data-align="center"></th>
+                                    <th data-field="year" data-align="center"></th>
+                                    <th data-field="notes" data-align="center"></th>
+                                </tr>
+                            </thead>
+                            </table>
+                            <br>
+                            <table id="table-plans" class="tables" data-detail-view="true">
+                                <thead>
+                                    <tr>
+                                        <th data-field="code" data-align="center"></th>
+                                        <th data-field="name" data-align="center"></th>
+                                        <th data-field="description" data-align="center"></th>
+                                        <th data-field="responsible" data-align="center"></th>
+                                        <th data-field="corresponsible" data-align="center"></th>
+                                        <th data-field="goal" data-align="center"></th>
+                                        <th data-field="estimation_date" data-align="center"></th>
+                                        <th data-field="notes" data-align="center"></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <br>
+                            <table id="table-indicator" class="tables"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+  
+  <div class="modal fade" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="modal-insertCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-insertLongTitle-insert"><div id="modal-title-div"></div></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <select id="select-element" name="select-element">
+                <option>Objective</option>
+                <option>Plan</option>
+                <option>Indicator</option>
+            </select>
+            
+            <form action="../../Model/PHP/insertRowPlan.php" method="POST" id="form-plan-insert">
+                <div class="select-container">
+                    <input type="text" name="plan-val" class="plan-val" value="Plan">
+                        <br><br><br>  
+                    <label for="select-objective">Choose an Objective:</label>
+                        <select id="select-objective" class="default-option" name="select-objective" required><option>Select an option...</option></select>
+                </div>
+                
+                    <hr>
+
+                    <div id="inputs-plan" class="grid">
+                        <label for="code-plan-insert">CODE</label><br>
+                            <input type="number" id="code-plan-insert" min="1" name="code-plan-insert" value="1" required>
+
+                        <label for="name-plan-insert">NAME</label><br>
+                            <input type="text" id="name-plan-insert" min="3" name="name-plan-insert" placeholder="Type a new Name" required>
+
+                        <label for="desc-plan-insert">DESCRIPTION</label><br>
+                            <textarea id="desc-plan-insert" name="desc-plan-insert" placeholder="Type a new description..."></textarea>
+
+                        <label for="resp-plan-insert">RESPONSIBLE</label><br>
+                            <input type="text" id="resp-plan-insert" min="3" name="resp-plan-insert" placeholder="Type a new Responsible" required>
+
+                        <label for="corresp-plan-insert">CORRESPONSIBLE</label><br>
+                            <input type="text" id="corresp-plan-insert" min="3" name="corresp-plan-insert" placeholder="Type a new Corresponsible" required>
+
+                        <label for="goal-plan-insert">GOAL</label><br>
+                            <input type="number" id="goal-plan-insert" min="1" name="goal-plan-insert" value="1" required>
+
+                        <label for="estdate-plan-insert">ESTIMATION DATE</label><br>
+                            <input type="text" id="estdate-plan-insert" min="1" name="estdate-plan-insert" placeholder="Type a new Estimation Date" required>
+
+                        <label for="notes-plan-insert">NOTES</label><br>
+                            <textarea id="notes-plan-insert" min="3" name="notes-plan-insert" placeholder="Type a new Notes..."></textarea>
+                                <input type="submit" name="send-plan-create" id="create-plan" value="Submit">
+                    </div>
+            </form>
+
+            <form action="../../Model/PHP/InsertRowObjective.php" method="POST" id="form-objective-insert">
+                <input type="text" name="objective-val" class="objective-val" value="Objective">
+
+                <div id="inputs-obj">
+                    <label for="name-objective-insert">NAME</label><br>
+                        <input type="text" id="name-objective-insert" min="3" name="name-objective-insert" placeholder="Type a new Name" required><br><br>
+
+                    <label for="code-objective-insert">CODE</label><br>
+                        <input type="number" id="code-objective-insert" min="1" name="code-objective-insert" value="1" required><br><br>
+
+                    <label for="year-objective-insert">YEAR</label><br>
+                        <input type="text" id="year-objective-insert" min="3" name="year-objective-insert" placeholder="Type a new Year" required><br><br>
+
+                    <label for="notes-objective-insert">NOTES</label><br>
+                        <textarea id="notes-objective-insert" min="3" name="notes-objective-insert" placeholder="Type a new Notes..."></textarea><br><br>
+                            <input type="submit" name="send-objective-create" id="create-objective" value="Submit">
+                </div>
+            </form>
+
+            <form action="../../Model/PHP/InsertRowIndicator.php" method="POST" id="form-indicator-insert">
+                <div class="select-container">
+                    <input type="text" name="indicator-val" class="indicator-val" value="Indicator">
+                        <br><br><br>
+                <label for="select-plan">Choose an Plan:</label>
+                    <select id="select-plan" class="default-option" name="select-plan" required><option>Select an option...</option></select>
+                </div>
+                <hr>
+
+                <div id="inputs-indicator">
+                    <label for="tracking-date-indicator">TRACKING DATE</label><br>
+                        <input type="text" id="tracking-date-indicator" min="3" name="tracking-date-indicator" placeholder="Format: [yy-mm-dd]" required><span></span><br><br>
+
+                    <label for="value-indicator">VALUE</label><br>
+                        <input type="number" id="value-indicator" min="1" name="value-indicator" value="1" required><br><br>
+                            <input type="submit" name="send-indicator-create" id="create-indicator" value="Submit">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+            <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modal-insertCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal-insertLongTitle-update"><div id="modal-title-div2"></div></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <select id="select-element-update" name="select-element-update">
+                            <option>Objective</option>
+                            <option>Plan</option>
+                        </select>
+    
+                        <form action="../../Model/PHP/updateRowPlan.php" method="POST" id="form-plan-update">
+                            <input type="text" name="plan-val" class="plan-val" value="Plan">
+                                <div id="inputs-plan2" class="grid">
+                                    <input type="text" id="ident-plan-update" min="3" name="ident-plan-update" placeholder="Type a new ID" readonly>
+    
+                                    <label for="code-plan-update">CODE</label><br>
+                                        <input type="number" id="code-plan-update" name="code-plan-update" value="1" required>
+    
+                                    <label for="name-plan-update">NAME</label><br>
+                                        <input type="text" id="name-plan-update" min="3" name="name-plan-update" placeholder="Type a new Name" required>
+    
+                                    <label for="desc-plan-update">DESCRIPTION</label><br>
+                                        <textarea id="desc-plan-update" name="desc-plan-update" placeholder="Type a new description..."></textarea>
+    
+                                    <label for="resp-plan-update">RESPONSIBLE</label><br>
+                                        <input type="text" id="resp-plan-update" min="3" name="resp-plan-update" placeholder="Type a new Responsible" required>
+    
+                                    <label for="corresp-plan-update">CORRESPONSIBLE</label><br>
+                                        <input type="text" id="corresp-plan-update" min="3" name="corresp-plan-update" placeholder="Type a new Corresponsible" required>
+    
+                                    <label for="goal-plan-update">GOAL</label><br>
+                                        <input type="number" id="goal-plan-update" name="goal-plan-update" value="1" required>
+    
+                                    <label for="estdate-plan-update">ESTIMATION DATE</label><br>
+                                        <input type="text" id="estdate-plan-update" min="3" name="estdate-plan-update" placeholder="Type a new Estimation Date" required>
+    
+                                    <label for="notes-plan-update">NOTES</label><br>
+                                        <textarea id="notes-plan-update" min="3" name="notes-plan-update" placeholder="Type a new Notes..."></textarea>
+                                            <input type="submit" name="send-plan-update" id="update-plan" value="Submit">
+                                </div>
+                        </form>
+    
+                            <form action="../../Model/PHP/updateRowObjective.php" method="POST" id="form-objective-update">
+                                <input type="text" name="objective-val" class="objective-val" value="Objective">
+                                <div id="inputs-obj2">
+                                    <input type="text" id="ident-objective-update" min="3" name="ident-objective-update" placeholder="Type a new ID" readonly><br><br>
+    
+                                    <label for="name-objective-update">NAME</label><br>
+                                        <input type="text" id="name-objective-update" min="3" name="name-objective-update" placeholder="Type a new Name" required><br><br>
+                                    
+                                    <label for="code-objective-update">CODE</label><br>
+                                        <input type="number" id="code-objective-update" name="code-objective-update" value="1" required><br><br>
+    
+                                    <label for="year-objective-update">YEAR</label><br>
+                                        <input type="text" id="year-objective-update" min="3" name="year-objective-update" placeholder="Type a new Year" required><br><br>
+    
+                                    <label for="notes-objective-update">NOTES</label><br>
+                                        <textarea id="notes-objective-update" min="3" name="notes-objective-update" placeholder="Type a new Notes..."></textarea><br><br>
+                                            <input type="submit" name="send-objective-update" id="update-objective" value="Submit">
+                                </div> 
+                            </form>
+
+                            <form action="../../Model/PHP/updateRowIndicator.php" method="POST" id="form-indicator-update">
+                                <input type="text" name="indicator-val" class="indicator-val" value="Indicator">
+                                <div id="inputs-indicator">
+                                    <input type="text" id="ident-indicator-update" min="3" name="ident-indicator-update" placeholder="Type a new ID" readonly><br><br>
+    
+                                    <label for="track-date-update">TRACKING DATE</label><br>
+                                        <input type="text" id="track-date-update" min="3" name="track-date-update" placeholder="Type a new Name" required><br><br>
+                                    
+                                    <label for="value-update">VALUE</label><br>
+                                        <input type="number" id="value-update" name="value-update" value="1" required><br><br>
+                                            <input type="submit" name="send-indicator-update" id="update-indicator" value="Submit">
+                                </div> 
+                            </form>
+                    </div>
+                    <div class="modal-footer"></div>
+                  </div>
+                </div>
+              </div>
+
+            <div class="col actions col-sm-2 col-dm-2 col-2">
+                <div class="crud-panel">
+                    <h3>Action Panel</h3>
+                        <hr>
+                        <div class="crud">
+                            <input type="button" class="btn btn-primary" id="add" data-bs-toggle="modal" data-bs-target="#modal-insert" value="Add +">
+                            <input type="button" class="btn btn-primary" id="update" data-bs-toggle="modal" data-bs-target="#modal-update" value="Update">
+                            <input type="button" class="btn btn-primary" name="delete" id="delete" value="Delete">
+                        </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+    <script src="../../Controller/controller.js"></script>
+</body>
+</html>
